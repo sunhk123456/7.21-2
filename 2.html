@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+            float: left;
+        }
+        
+        #small-box {
+            position: relative;
+            z-index: 1;
+        }
+        
+        #float-box {
+            display: none;
+            width: 160px;
+            height: 120px;
+            position: absolute;
+            /*使元素脱离文档流,方便自由操控元素*/
+            background: #ffffcc;
+            border: 1px solid #ccc;
+            filter: alpha(opacity=50);
+            opacity: 0.5;
+        }
+        
+        #mark {
+            /*应该是把图片放在这个上面，它的透明度为0，是个block*/
+            position: absolute;
+            /*元素脱离文档流，使得图片和浮动框可与之重叠，也正因如此，要↓*/
+            display: block;
+            width: 400px;
+            height: 430px;
+            background-color: #fff;
+            filter: alpha(opacity=0);
+            /*过滤器，目前只有少数浏览器支持*/
+            opacity: 0;
+            z-index: 10;
+            /*确保markBox位于floatBox和图片之上，防止markBox被覆盖，导致对markBox的鼠标移动事件不起作用*/
+        }
+        
+        #big-box {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 430px;
+            width: 320px;
+            height: 240px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            z-index: 1;
+        }
+        
+        #big-box img {
+            position: absolute;
+            z-index: 5
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+
+
+
+        <div id="small-box" class="ks-imagezoom-wrap">
+            <div id="mark"></div>
+            <div id="float-box"></div>
+            <img id="J_ImgBooth" style="width: 400px;height: 400px;" src=" https://img.alicdn.com/imgextra/i3/3482462828/O1CN01NAHprl1WlGgMkoMDt_!!3482462828-0-lubanu-s.jpg_430x430q90.jpg"><span style="position: absolute; top: 148.797px; left: 0.5105px; width: 218.405px; height: 218.405px; display: none;"
+                class="ks-imagezoom-lens" data-spm-anchor-id="a220o.1000855.1997427645.i0.2f8822c9lQsoM9"></span></span>
+
+        </div>
+        <div class="tb-thumb-warp ">
+
+            <div class="tb-thumb-content">
+                <ul id="J_UlThumb" class="tb-thumb tm-clear">
+                    <li class="">
+                        <a href="#" data-spm-anchor-id="a220o.1000855.1997427645.2"><img arr="https://img.alicdn.com/imgextra/i2/3482462828/O1CN01TLjthp1WlGgF3qO2l_!!3482462828-0-lubanu-s.jpg_430x430q90.jpg" src="http://img.alicdn.com/imgextra/i2/3482462828/O1CN01TLjthp1WlGgF3qO2l_!!3482462828-0-lubanu-s.jpg_60x60q90.jpg"
+                                alt="商品预览图"></a>
+                    </li>
+                    <li class="tb-selected">
+                        <a href="#" data-spm-anchor-id="a220o.1000855.1997427645.3"><img arr="https://img.alicdn.com/imgextra/i3/3482462828/O1CN01NAHprl1WlGgMkoMDt_!!3482462828-0-lubanu-s.jpg_430x430q90.jpg" src="http://img.alicdn.com/imgextra/i3/3482462828/O1CN01NAHprl1WlGgMkoMDt_!!3482462828-0-lubanu-s.jpg_60x60q90.jpg"
+                                alt="商品预览图"></a>
+                    </li>
+                    <li class="">
+                        <a href="#" data-spm-anchor-id="a220o.1000855.1997427645.4"><img arr="https://img.alicdn.com/imgextra/i4/3482462828/O1CN01xYxMNq1WlGgSBFaFA_!!3482462828-0-lubanu-s.jpg_430x430q90.jpg" src="http://img.alicdn.com/imgextra/i4/3482462828/O1CN01xYxMNq1WlGgSBFaFA_!!3482462828-0-lubanu-s.jpg_60x60q90.jpg"
+                                alt="商品预览图"></a>
+                    </li>
+                    <li class="">
+                        <a href="#" data-spm-anchor-id="a220o.1000855.1997427645.5"><img arr="https://img.alicdn.com/imgextra/i4/3482462828/O1CN01vzl3nj1WlGgQSyT6v_!!3482462828-0-lubanu-s.jpg_430x430q90.jpg" src="http://img.alicdn.com/imgextra/i4/3482462828/O1CN01vzl3nj1WlGgQSyT6v_!!3482462828-0-lubanu-s.jpg_60x60q90.jpg"
+                                alt="商品预览图"></a>
+                    </li>
+                    <li class="">
+                        <a href="#" data-spm-anchor-id="a220o.1000855.1997427645.6"><img arr="https://img.alicdn.com/imgextra/i1/3482462828/O1CN01K0yLQ41WlGgR8fPlE_!!3482462828-0-lubanu-s.jpg_430x430q90.jpg" src="http://img.alicdn.com/imgextra/i1/3482462828/O1CN01K0yLQ41WlGgR8fPlE_!!3482462828-0-lubanu-s.jpg_60x60q90.jpg"
+                                alt="商品预览图"></a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+        <div id="big-box" class="big">
+            <img src="https://img.alicdn.com/imgextra/i3/3482462828/O1CN01NAHprl1WlGgMkoMDt_!!3482462828-0-lubanu-s.jpg_430x430q90.jpg" />
+
+        </div>
+
+
+    </div>
+    <script>
+        var imgLi = document.querySelectorAll(".tb-thumb li")
+        var box = document.querySelector(".ks-imagezoom-wrap img")
+
+        console.log(box)
+        console.log(imgLi)
+        for (let i = 0; i < imgLi.length; i++) {
+            imgLi[i].onmousemove = function() {
+
+
+                for (var j = 0; j < imgLi.length; j++) {
+
+                    imgLi[j].className = "none";
+
+                }
+                imgLi[i].className = "tb-selected";
+                var tbSd = document.querySelector(".tb-selected img")
+                var big = document.querySelector(".big img")
+                box.src = tbSd.getAttribute("arr")
+                big.src = tbSd.getAttribute("arr")
+            }
+        }
+
+        //找六个个元素：demo，smallBox,foatBox,mark,bigfloatBox,imgs,
+        var objDemo = document.getElementById("demo");
+        var objSmallBox = document.getElementById("small-box");
+        var objMarkBox = document.getElementById("mark");
+        var objFloatBox = document.getElementById("float-box");
+        var objBigBox = document.getElementById("big-box");
+        var objBigBoxImg = objBigBox.getElementsByTagName("img")[0];
+        console.log(objBigBox)
+            //给小盒子添加事件，移入和移出
+            //移入：浮动的box和和bigBox显示
+        objSmallBox.onmouseover = function() {
+                objFloatBox.style.display = "block";
+                objBigBox.style.display = "block";
+            }
+            //移除：浮动的box和bigBox隐藏
+        objSmallBox.onmouseout = function() {
+            objFloatBox.style.display = "none";
+            objBigBox.style.display = "none";
+        }
+
+        //给小盒子添加鼠标移动事件
+        objMarkBox.onmousemove = function(ev) {
+            var _event = ev || window.event; //做兼容性，兼容IE
+            //1计算值：
+            var left = _event.clientX - objDemo.offsetLeft - objSmallBox.offsetLeft - objFloatBox.offsetWidth / 2;
+            var top = _event.clientY - objDemo.offsetTop - objSmallBox.offsetTop - objFloatBox.offsetHeight / 2;
+
+            //5.优化，在前面加判断,不让其溢出，加判断
+            if (left < 0) left = 0;
+            if (top < 0) top = 0;
+            if (left > objSmallBox.offsetWidth - objFloatBox.offsetWidth)
+                left = objSmallBox.offsetWidth - objFloatBox.offsetWidth;
+            if (top > objSmallBox.offsetHeight - objFloatBox.offsetHeight)
+                top = objSmallBox.offsetHeight - objFloatBox.offsetHeight;
+
+            //2把值赋值给放大镜
+            objFloatBox.style.left = left + "px";
+            objFloatBox.style.top = top + "px";
+
+            //3计算比例
+            var percentX = left / (objMarkBox.offsetWidth - objFloatBox.offsetWidth);
+            var percentY = top / (objMarkBox.offsetHeight - objFloatBox.offsetHeight);
+
+            //4利用这个比例计算距离后赋值给右侧的图片
+            objBigBoxImg.style.left = -percentX * (objBigBoxImg.offsetWidth - objBigBox.offsetWidth) + "px";
+            objBigBoxImg.style.top = -percentY * (objBigBoxImg.offsetHeight - objBigBox.offsetHeight) + "px";
+        }
+    </script>
+</body>
+
+</html>
